@@ -5,7 +5,7 @@ body {
 
 .mapa {
     width: 100%;
-    min-height: 100vh;
+    min-height: 70vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -56,7 +56,7 @@ body {
 }
 
 /* HEADER */
-header {
+header{
     width: 100%;
     background-color: hsl(6, 98%, 35%);
     padding: 12px 0;
@@ -67,17 +67,17 @@ header {
 
 header a {
     color: #f5e6d3;
-    text-decoration: royalblue;
+    text-decoration: none;
     font-weight: bold;
     background: hsl(9, 69%, 50%);
     padding: 2px 10px;
     border-radius: 10px;
     border: 1.3px solid black;
-    transition: all 0.2s ease;
+    transition: all 1s ease;
 }
 
 header a {
-    transition: transform 0.2s ease, background 0.2s ease;
+    transition: transform 1s ease, background 1s ease;
 }
 
 header a:hover {
@@ -149,7 +149,7 @@ header a:hover {
 }
 
 .btn-left, .btn-center, .btn-right {
-    transition: transform 0.2s ease;
+    transition: transform 0.7s ease;
 }
 
 .btn-left:hover, .btn-center:hover, .btn-right:hover {
@@ -189,7 +189,7 @@ header a:hover {
 
     transform: translate(-50%, -50%) rotate(-0.98deg);
 
-    background: rgba(0, 0, 0, 0.65);
+    background: rgb(0, 0, 0);
     color: #f5e6c8;
 
     display: flex;
@@ -198,7 +198,7 @@ header a:hover {
     text-align: center;
 
     opacity: 0;
-    transition: opacity 0.2s ease;
+    transition: none;
 
     padding: 15px;
     border-radius: 12px;
@@ -207,6 +207,111 @@ header a:hover {
 }
 
 .boton-card:hover .overlay {
-    opacity: 11.5;
-    transition: opacity 0.6s ease;
+    opacity: 0.9;
+    transition: opacity 3.5s ease;
+}
+.footer {
+    background-color: #1a1a1a;
+    color: #f5e6c8;
+    text-align: center;
+    padding: 8px 0;
+    margin-top: 20px;
+}
+
+.footer p {
+    margin: 0;
+}
+
+.footer .redes {
+    margin-top: 9px;
+}
+
+.footer .redes a {
+    color: #f5e6c8;
+    margin: 0 7px;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer .redes a:hover {
+    color: #ffcc66;
+}
+
+/* PAPER CARDS (Página 2) */
+.paper-card {
+    width: 42%;
+    max-width: 700px;
+    margin: 25px 4% 25px auto;
+    padding: 20px;
+
+    background: #f5e6c8;
+    border: 3px solid #2c1b12;
+    border-radius: 14px;
+
+    box-shadow: 5px 5px 0px #2c1b12;
+
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.paper-card:hover {
+    transform: scale(1.03) rotate(-0.5deg);
+    box-shadow: 8px 8px 0px #2c1b12;
+}
+
+.paper-card h3 {
+    margin-top: 0;
+    color: #2c1b12;
+}
+
+.paper-card p {
+    margin: 6px 0;
+}
+/* SUBTITULO CRONOLOGIA */
+.timeline h2 {
+    text-align: right;
+    margin: 20px 13% 35px auto;
+}
+/* TITULO PAGINA 2 */
+.centro-investigacion {
+    text-align: right;
+    margin: 20px 1.9% 30px auto;
+}
+
+.centro-investigacion h1 {
+    font-size: 40px;
+    color: #2c1b12;
+    animation: bounceTitle 2.5s ease-in-out 1s;
+}
+
+/* SUBTITULO PAGINA 2 */
+.subtitulo-investigacion {
+    font-size: 18px;
+    color: #000000;
+    max-width: 600px;
+    margin: 10px 0 0 auto;
+    line-height: 1.5;
+    text-align: right;
+}
+
+/* OCULTAR SCROLLBAR (MEJORADO) */
+html, body {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE y Edge antiguos */
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
+}
+
+/* IMAGEN NOTICIA IZQUIERDA */
+.img-noticia {
+    width: 460px;
+    max-width: 460px;
+    min-width: 140px;
+
+    float: left;
+    margin: 20px 20px 10px 5%;
+
+    transform: rotate(-2deg);
 }
