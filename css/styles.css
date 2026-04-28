@@ -1,7 +1,16 @@
 body {
     margin: 0;
-    font-family: serif;
+    font-family: "playfair display", "Times New Roman", serif;
 }
+
+.pagina2-body {
+    background-color: #e8d5b0;
+    background-image: 
+        url("https://www.transparenttextures.com/patterns/old-map.png"),
+        radial-gradient(ellipse at center, #e8d5b0 0%, #c9a96e 100%);
+    background-blend-mode: multiply;
+}
+
 
 .mapa {
     width: 100%;
@@ -58,21 +67,23 @@ body {
 /* HEADER */
 header{
     width: 100%;
-    background-color: hsl(6, 98%, 35%);
+    background-color: hsl(6, 60%, 22%);
+    border-bottom: 3px solid #8b1a1a;
     padding: 12px 0;
     display: flex;
     justify-content: center;
     gap: 35px;
+    box-shadow: inset 0 -4px 10px rgba(0,0,0,0.4);
 }
 
 header a {
     color: #f5e6d3;
     text-decoration: none;
     font-weight: bold;
-    background: hsl(9, 69%, 50%);
+    background: hsl(9, 50%, 30%);
     padding: 2px 10px;
     border-radius: 10px;
-    border: 1.3px solid black;
+    border: 1.5px solid #5a1a1a;
     transition: all 1s ease;
 }
 
@@ -239,58 +250,183 @@ header a:hover {
 
 /* PAPER CARDS (Página 2) */
 .paper-card {
-    width: 42%;
+    width: 48%;
     max-width: 700px;
-    margin: 25px 4% 25px auto;
-    padding: 20px;
+    margin: 25px 3% 25px auto;
+    padding: 22px;
+    background: #f0ddb0;
+    position: relative;
 
-    background: #f5e6c8;
-    border: 3px solid #2c1b12;
-    border-radius: 14px;
+    border-radius: 18px;
+    border: 1.5px solid #c9b48c;
 
-    box-shadow: 5px 5px 0px #2c1b12;
+    /* doble borde rojo tipo editorial */
+    outline: 1px solid rgba(160, 50, 40, 0.5);
+    outline-offset: -6px;
+
+    box-shadow:
+        0px 15px 30px rgba(0,0,0,0.25),
+        inset 0 0 25px rgba(120, 80, 40, 0.15);
+
+    /* textura sutil */
+    background-image:
+        radial-gradient(rgba(120, 80, 40, 0.12) 1px, transparent 1px),
+        linear-gradient(rgba(101,67,33,0.06), rgba(101,67,33,0.06));
+    border-color: #a08050;
+    background-size: 4px 4px, 100% 100%;
+    outline-color: rgba(130, 40, 30, 0.6);
+
+
+    transform: rotate(-0.4deg);
 
     transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
+.paper-card:nth-child(even) {
+    transform: rotate(0.5deg);
+}
+
+.paper-card:nth-child(odd) {
+    transform: rotate(-0.5deg);
+}
+
 .paper-card:hover {
-    transform: scale(1.03) rotate(-0.5deg);
+    transform: scale(1.03) rotate(0deg);
     box-shadow: 8px 8px 0px #2c1b12;
 }
 
+.paper-card::before {
+    content: "";
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-2deg);
+
+    width: 95px;
+    height: 24px;
+
+    background: linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.6),
+        rgba(210,210,210,0.4)
+    );
+
+    border: 1px solid rgba(0,0,0,0.15);
+
+    box-shadow:
+        0 3px 6px rgba(0,0,0,0.25),
+        inset 0 0 4px rgba(0,0,0,0.25);
+
+    border-radius: 3px;
+}
+
+.paper-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 18px;
+
+    background: radial-gradient(rgba(0,0,0,0.08), transparent 70%);
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+.paper-card:nth-child(even)::before {
+    transform: translateX(-50%) rotate(4deg);
+}
+
+.paper-card:nth-child(odd)::before {
+    transform: translateX(-50%) rotate(-5deg);
+}
+
 .paper-card h3 {
+    font-family: "Georgia", serif;
+    font-weight: bold;
     margin-top: 0;
     color: #2c1b12;
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.paper-card h3 span {
+    color: #a83232;
+    font-weight: bold;
+    letter-spacing: 0.5px;
 }
 
 .paper-card p {
+    line-height: 1.6;
     margin: 6px 0;
+
+
+}
+/* ESTILO TIPO MAQUINA DE ESCRIBIR (DOI Y REVISTA) */
+.paper-card p strong {
+    font-family: "Courier New", Courier, monospace;
+    letter-spacing: 1px;
+    color: #1a1a1a;
+    text-transform: uppercase;
+}
+
+.paper-card p {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 14px;
 }
 /* SUBTITULO CRONOLOGIA */
+.timeline {
+    padding: 0 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
 .timeline h2 {
-    text-align: right;
-    margin: 20px 13% 35px auto;
+    text-align: center;
+    margin: 0px 0% 50px 20%;
+    font-size: 22px;
+    color: #2c1b12;
 }
 /* TITULO PAGINA 2 */
 .centro-investigacion {
-    text-align: right;
-    margin: 20px 1.9% 30px auto;
+    text-align: center;
+    margin: 10px 0% 20px 20%;
+    padding: 0 10px;
+    box-sizing: border-box;
 }
 
 .centro-investigacion h1 {
-    font-size: 40px;
+    font-size: 42px;
     color: #2c1b12;
-    animation: bounceTitle 2.5s ease-in-out 1s;
+    font-family: "Times New Roman", Times, serif;
+    letter-spacing: 0px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    line-height: 1.2;
+    word-break: break-word;
+}
+
+.centro-investigacion h1::after {
+    content: "——❦——";
+    display: block;
+    font-size: 18px;
+    margin-top: 6px;
+    color: #8b3a2a;
+    letter-spacing: 4px;
+}
+.timeline h2::after {
+    content: "——❦——";
+    display: block;
+    font-size: 16px;
+    margin: 6px auto 0;
+    color: #8b3a2a;
+    letter-spacing: 4px;
+    margin: 6px auto 0;
 }
 
 /* SUBTITULO PAGINA 2 */
 .subtitulo-investigacion {
     font-size: 18px;
-    color: #000000;
-    max-width: 600px;
-    margin: 10px 0 0 auto;
-    line-height: 1.5;
-    text-align: right;
+    color: #3a2a1a;
+    margin: 0 10px 15px 10px;
+    text-align: center;
 }
 
 /* OCULTAR SCROLLBAR (MEJORADO) */
@@ -304,14 +440,58 @@ body::-webkit-scrollbar {
     display: none; /* Chrome, Safari */
 }
 
-/* IMAGEN NOTICIA IZQUIERDA */
-.img-noticia {
-    width: 460px;
-    max-width: 460px;
-    min-width: 140px;
+.layout-doble {
+    display: flex;
+    width: 100%;
+}
 
-    float: left;
-    margin: 20px 20px 10px 5%;
+.lado-izquierdo {
+    width: 45%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 45px;
+}
 
-    transform: rotate(-2deg);
+.lado-derecho {
+    width: 50%;
+    padding: 20px 50px 50px 120px;
+    position: relative;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.lado-derecho::before {
+    content: "";
+    position: absolute;
+    top: 120px;
+    right: 60px;
+    width: 140px;
+    height: 140px;
+    background: radial-gradient(rgba(0,0,0,0.08), transparent 70%);
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.img-periodico {
+    width: 140%;
+    max-width: 1100px;
+    transform: rotate(3deg);
+    margin-left: 280px;
+    filter: drop-shadow(0px 30px 50px rgba(0,0,0,0.35));
+    border: none;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .layout-doble {
+        flex-direction: column;
+    }
+
+    .lado-izquierdo,
+    .lado-derecho {
+        width: 100%;
+    }
 }
