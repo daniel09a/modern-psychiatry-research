@@ -250,9 +250,9 @@ header a:hover {
 
 /* PAPER CARDS (Página 2) */
 .paper-card {
-    width: 48%;
+    width: 60%;
     max-width: 700px;
-    margin: 25px 3% 25px auto;
+    margin: 25px 6% 25px auto;
     padding: 22px;
     background: #f0ddb0;
     position: relative;
@@ -380,14 +380,14 @@ header a:hover {
 }
 .timeline h2 {
     text-align: center;
-    margin: 0px 0% 50px 20%;
+    margin: -20px 0% 50px 20%;
     font-size: 22px;
     color: #2c1b12;
 }
 /* TITULO PAGINA 2 */
 .centro-investigacion {
     text-align: center;
-    margin: 10px 0% 20px 20%;
+    margin: -10px 0% 20px 20%;
     padding: 0 10px;
     box-sizing: border-box;
 }
@@ -455,7 +455,7 @@ body::-webkit-scrollbar {
 
 .lado-derecho {
     width: 50%;
-    padding: 20px 50px 50px 120px;
+    padding: 5px 50px 50px 120px;
     position: relative;
     overflow-y: auto;
     display: flex;
@@ -476,11 +476,10 @@ body::-webkit-scrollbar {
 }
 
 .img-periodico {
-    width: 140%;
+    width: 125%;
     max-width: 1100px;
     transform: rotate(3deg);
     margin-left: 280px;
-    filter: drop-shadow(0px 30px 50px rgba(0,0,0,0.35));
     border: none;
 }
 
