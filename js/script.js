@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!items.length) return;
 
     const total = items.length;
-    const radio = 235;
+    const radio = 265;
 
     let index = 0;
 
@@ -36,22 +36,64 @@ document.addEventListener("DOMContentLoaded", function () {
             const x = Math.cos(angulo) * radio;
             const y = Math.sin(angulo) * radio;
 
-            const size = 115; // debe coincidir con el width en CSS
-            const offset = size / 2;
+            item.style.left = "50%";
+            item.style.top  = "50%";
 
-            item.style.left = `calc(50% + ${x}px - ${offset}px)`;
-            item.style.top  = `calc(50% + ${y}px - ${offset}px)`;
+            item.style.setProperty('--tx', `${x}px`);
+            item.style.setProperty('--ty', `${y}px`);
+
+            const activoIndex = index % total;
+
+            if (i === activoIndex) {
+                item.classList.add("activo");
+            } else {
+                item.classList.remove("activo");
+            }
         });
     }
+
+    const boton = document.querySelector(".btn-rotar");
+    const resetBtn = document.querySelector(".btn-reset");
+    const panel = document.querySelector(".panel-info");
+    const contenedor = document.querySelector(".circulo-container");
+
+    const textos = [
+        "El creador: origen de la idea.",
+        "Receptor PAC1: base científica.",
+        "Opinión pública: impacto social.",
+        "Japón: contexto del descubrimiento.",
+        "Cultura cómic: narrativa visual.",
+        "Héroes: simbolismo del cambio.",
+        "Redes: difusión moderna."
+    ];
 
     function rotar() {
         index++;
         posicionar();
+
+        // mover carrusel
+        contenedor.classList.add("mover");
+
+        // mostrar panel
+        panel.classList.add("activo");
+
+        const actual = index % total; // siempre el de arriba
+        panel.innerHTML = `<p>${textos[actual] || "Nueva información"}</p>`;
     }
 
-    const boton = document.querySelector(".btn-rotar");
     if (boton) {
         boton.addEventListener("click", rotar);
+    }
+
+    if (resetBtn) {
+        resetBtn.addEventListener("click", () => {
+            index = 0;
+            posicionar();
+
+            contenedor.classList.remove("mover");
+            panel.classList.remove("activo");
+            panel.innerHTML = "";
+        });
     }
 
     posicionar();
