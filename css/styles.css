@@ -4,11 +4,19 @@ body {
 }
 
 .pagina2-body {
-    background-color: #e8d5b0;
+    background-color: #f5edd6;
     background-image: 
-        url("https://www.transparenttextures.com/patterns/old-map.png"),
-        radial-gradient(ellipse at center, #e8d5b0 0%, #c9a96e 100%);
-    background-blend-mode: multiply;
+    url("https://www.transparenttextures.com/patterns/old-map.png");
+    position: relative;
+}
+
+.pagina2-body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(ellipse at center, transparent 40%, rgba(30, 15, 0, 0.45) 100%);
+    pointer-events: none;
+    z-index: 0;
 }
 
 
@@ -68,7 +76,6 @@ body {
 header{
     width: 100%;
     background-color: hsl(6, 60%, 22%);
-    border-bottom: 3px solid #8b1a1a;
     padding: 12px 0;
     display: flex;
     justify-content: center;
@@ -254,7 +261,7 @@ header a:hover {
     max-width: 700px;
     margin: 25px 6% 25px auto;
     padding: 22px;
-    background: #f0ddb0;
+    background: #f5e8c0;
     position: relative;
 
     border-radius: 18px;
@@ -270,8 +277,8 @@ header a:hover {
 
     /* textura sutil */
     background-image:
-        radial-gradient(rgba(120, 80, 40, 0.12) 1px, transparent 1px),
-        linear-gradient(rgba(101,67,33,0.06), rgba(101,67,33,0.06));
+        radial-gradient(rgba(120, 80, 40, 0.10) 1px, transparent 1px),
+        linear-gradient(rgba(101,67,33,0.04), rgba(101,67,33,0.04));
     border-color: #a08050;
     background-size: 4px 4px, 100% 100%;
     outline-color: rgba(130, 40, 30, 0.6);
@@ -387,7 +394,7 @@ header a:hover {
 /* TITULO PAGINA 2 */
 .centro-investigacion {
     text-align: center;
-    margin: -10px 0% 20px 20%;
+    margin: 10px 0% 20px 20%;
     padding: 0 10px;
     box-sizing: border-box;
 }
@@ -395,19 +402,22 @@ header a:hover {
 .centro-investigacion h1 {
     font-size: 42px;
     color: #2c1b12;
-    font-family: "Times New Roman", Times, serif;
+    font-family: "Cinzel Decorative", "IM Fell English SC", serif;
     letter-spacing: 0px;
     font-weight: 600;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
     line-height: 1.2;
     word-break: break-word;
+    text-shadow:
+        1px 1px 0 #d6c3a1,
+        2px 2px 0 rgba(0,0,0,0.15);
 }
 
 .centro-investigacion h1::after {
     content: "——❦——";
     display: block;
     font-size: 18px;
-    margin-top: 6px;
+    margin-top: 16px;
     color: #8b3a2a;
     letter-spacing: 4px;
 }
@@ -415,10 +425,10 @@ header a:hover {
     content: "——❦——";
     display: block;
     font-size: 16px;
-    margin: 6px auto 0;
+    margin: 16px auto 0;
     color: #8b3a2a;
     letter-spacing: 4px;
-    margin: 6px auto 0;
+    margin: 16px auto 0;
 }
 
 /* SUBTITULO PAGINA 2 */
@@ -483,6 +493,15 @@ body::-webkit-scrollbar {
     border: none;
 }
 
+.img-inkwell {
+    position: absolute;
+    bottom: 510px;
+    left: 110px;
+    width: 640px;
+    transform: rotate(-2deg);
+    z-index: 0;
+}
+
 /* RESPONSIVE */
 @media (max-width: 900px) {
     .layout-doble {
@@ -493,4 +512,79 @@ body::-webkit-scrollbar {
     .lado-derecho {
         width: 100%;
     }
+}
+/* CARRUSEL CIRCULAR PAGINA 3 */
+.circulo-container {
+    position: relative;
+    width: 600px;
+    height: 600px;
+    margin: 100px auto;
+    z-index: 2;
+}
+
+.imagen-central {
+    position: absolute;
+    width: 300px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+    transition: transform 0.3s ease;
+}
+
+.imagen-central:hover {
+    transform: translate(-50%, -50%) scale(1.05);
+}
+
+.circulo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.item {
+    position: absolute;
+    width: 115px;
+    transition: transform 0.35s ease, opacity 0.35s ease, filter 0.35s ease;
+    opacity: 0.5;
+    z-index: 1;
+    cursor: pointer;
+    filter: grayscale(20%);
+}
+
+/* Estado por defecto cuando hay uno en hover */
+.circulo:has(.item:hover) .item:not(:hover) {
+    transform: scale(0.75);
+    opacity: 0.3;
+    filter: grayscale(40%);
+}
+
+.item:hover {
+    transform: scale(1.6) !important;
+    opacity: 1 !important;
+    z-index: 10;
+}
+
+.item.activo {
+    transform: scale(1.5);
+    opacity: 1;
+    z-index: 3;
+}
+
+.btn-rotar {
+    position: absolute;
+    bottom: -70px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    background: #2c1b12;
+    color: #f5e6d3;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.btn-rotar:hover {
+    background: #5a1a1a;
 }
